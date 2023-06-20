@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../styles/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProductData, setReviewData, setZoneData } from '../../actions';
 import useFetchData from '../../components/customhooks/useFetchData';
@@ -17,6 +16,7 @@ import Facilities from './components/Facilities';
 import CalendarProduct from './components/CalendarProduct';
 import ProductReview from './components/ProductReview';
 import KakaoMap from './components/KakaoMap';
+import { URL, END_POINT } from '../../config';
 const ProductDetail = () => {
   const overviewRef = useRef();
   const featuresRef = useRef();
@@ -55,22 +55,14 @@ const ProductDetail = () => {
   }
 
   useFetchData(
-    `http://10.58.52.227:3000/products/camps?campId=${campId}&startDate=${formattedStartDate}&endDate=${formattedEndDate}`,
+    `${URL}products/camps?campId=${campId}&startDate=${formattedStartDate}&endDate=${formattedEndDate}`,
     dispatch,
     setZoneData
   );
 
-  useFetchData(
-    `http://10.58.52.227:3000/products/camps/${campId}`,
-    dispatch,
-    setProductData
-  );
+  useFetchData(`${URL}products/camps/${campId}`, dispatch, setProductData);
 
-  useFetchData(
-    `http://10.58.52.227:3000/reviews/${campId}`,
-    dispatch,
-    setReviewData
-  );
+  useFetchData(`${URL}reviews/${campId}`, dispatch, setReviewData);
 
   if (
     !reviewData ||
@@ -79,6 +71,7 @@ const ProductDetail = () => {
   ) {
     return <div>Loading...</div>;
   }
+  console.log(zoneData);
 
   return (
     <Container>

@@ -4,6 +4,7 @@ import { Mixin } from 'react';
 import { flexSort } from '../../../../../styles/mixin';
 import styled from 'styled-components';
 import HeartIcon from '../../../../../assets/images/components/Common/HeartIcon';
+import { END_POINT, URL } from '../../../../../config';
 
 const WishList = () => {
   const [wishList, setWishList] = useState([]);
@@ -11,7 +12,7 @@ const WishList = () => {
 
   useEffect(() => {
     axios
-      .get('http://10.58.52.227:3000/wishs', {
+      .get(`${URL}${END_POINT.wishList}`, {
         headers: {
           authorization: TOKEN,
         },

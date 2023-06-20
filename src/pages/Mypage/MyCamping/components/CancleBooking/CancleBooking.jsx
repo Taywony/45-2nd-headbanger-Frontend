@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { flexSort } from '../../../../../styles/mixin';
+import { END_POINT, URL } from '../../../../../config';
 
 const CancleBooking = () => {
   const [cancleList, setCancleList] = useState([]);
@@ -9,7 +10,7 @@ const CancleBooking = () => {
 
   useEffect(() => {
     axios
-      .get('http://10.58.52.227:3000/users/reservation-lists', {
+      .get(`${URL}${END_POINT.reservationList}`, {
         headers: {
           authorization: TOKEN,
         },

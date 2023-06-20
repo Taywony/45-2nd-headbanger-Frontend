@@ -11,7 +11,7 @@ export default NiceModal.create(({ OrderSuccessModal }) => {
   const closeModal = () => {
     modal.remove(OrderSuccessModal);
     document.body.style.overflow = 'unset';
-    window.location.replace('http://localhost:3000/mypage');
+    window.location.replace('/mypage');
   };
   return (
     <Container>

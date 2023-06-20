@@ -5,6 +5,7 @@ import SuccessModal from './SuccessModal';
 import StarRating from './StarRating';
 import styled from 'styled-components';
 import { flexSort } from '../../../../../../styles/mixin';
+import { END_POINT, URL } from '../../../../../../config';
 
 export default NiceModal.create(({ id }) => {
   const [totalReview, setTotalReview] = useState({
@@ -42,7 +43,7 @@ export default NiceModal.create(({ id }) => {
 
   const addReview = () => {
     axios
-      .post('http://10.58.52.227:3000/reviews', totalReview, {
+      .post(`${URL}${END_POINT.review}`, totalReview, {
         headers: {
           'Content-Type': 'application/json',
           authorization: TOKEN,

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { REDIRECT_URI } from './LoginData';
 import LoadingMotion from '../../../components/Common/LoadingMotion';
+import { END_POINT, URL } from '../../../config';
 
 const Auth = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const Auth = () => {
   const [accessToken, setAccessToken] = useState('');
 
   const exchangeKakaoToken = async accessToken => {
-    const url = 'http://10.58.52.227:3000/users/kakao';
+    const url = `${URL}${END_POINT.login}`;
     const body = JSON.stringify({
       accessToken: accessToken,
     });

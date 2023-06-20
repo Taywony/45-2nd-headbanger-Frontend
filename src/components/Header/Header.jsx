@@ -4,6 +4,7 @@ import HeaderMenu from './componenets/HeaderMenu';
 import axios from 'axios';
 import styled from 'styled-components';
 import { flexSort } from '../../styles/mixin';
+import { END_POINT, URL } from '../../config';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Navbar = () => {
   useEffect(() => {
     TOKEN &&
       axios
-        .get('http://10.58.52.227:3000/users/loginedUser', {
+        .get(`${URL}${END_POINT.heade}r`, {
           headers: {
             authorization: TOKEN,
           },

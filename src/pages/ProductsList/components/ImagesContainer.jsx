@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import HeartIcon from '../../ProductsList/components/HeartIcon';
 import LoadingMotion from '../../../components/Common/LoadingMotion';
 import { boxSize, fontMix } from '../../../styles/mixin';
-import { PRODUCT_LIST_API } from '../../../config';
+import { END_POINT, URL } from '../../../config';
 
 const ImagesContainer = ({ id, searchParams, campId }) => {
   const [product, setProduct] = useState([]);
@@ -17,7 +17,7 @@ const ImagesContainer = ({ id, searchParams, campId }) => {
   const fetchProducts = async (offset = 0) => {
     try {
       const response = await fetch(
-        `${PRODUCT_LIST_API}/products?${queryString}&offset=${offset}&limit=${limit}`
+        `${URL}${END_POINT.product}?${queryString}&offset=${offset}&limit=${limit}`
       );
 
       const data = await response.json();
@@ -34,8 +34,6 @@ const ImagesContainer = ({ id, searchParams, campId }) => {
       }
     } catch (error) {}
   };
-
-  console.log(product);
 
   useEffect(() => {
     fetchProducts();

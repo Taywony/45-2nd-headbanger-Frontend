@@ -9,7 +9,7 @@ import SortByBox from './components/SortByBox';
 import ImagesContainer from './components/ImagesContainer';
 import KakaoMapModal from './components/KakaoMapModal';
 import SiteBanner from './components/SiteBanner';
-import { PRODUCT_LIST_API } from '../../../src/config';
+import { END_POINT, URL } from '../../../src/config';
 import { flexSort } from '../../styles/mixin';
 
 const ProductsList = () => {
@@ -25,7 +25,7 @@ const ProductsList = () => {
         const queryString = searchParams.toString();
 
         const response = await fetch(
-          `${PRODUCT_LIST_API}/products?${queryString}`
+          `${URL}${END_POINT.product}?${queryString}`
         );
         const data = await response.json();
 

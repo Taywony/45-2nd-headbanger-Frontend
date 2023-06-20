@@ -44,8 +44,6 @@ const Kakao = () => {
     tid: '',
   };
 
-  console.log('서버로', orderInfo);
-
   const readyPaprams = {
     cid: 'TC0ONETIME',
     partner_order_id: 'partner_order_id',
@@ -59,8 +57,6 @@ const Kakao = () => {
     fail_url: 'http://localhost:3000/payfail',
     cancel_url: 'http://localhost:3000/paycancel',
   };
-
-  console.log('카카오로', readyPaprams);
 
   useEffect(() => {
     axios
@@ -80,40 +76,6 @@ const Kakao = () => {
   }, []);
 
   return nextRedirectPcUrl;
-  // (
-  //   <PayButton href={nextRedirectPcUrl}>
-  //     <PayImg src="/images/Payment/pay-arrow.png" />
-  //     <PayTitle>결제</PayTitle>
-  //   </PayButton>
-  // );
 };
 
 export default Kakao;
-
-const PayButton = styled.a`
-  ${flexSort('center', 'center')}
-  flex-direction: column;
-  text-decoration-line: none;
-  color: initial;
-  gap: 12px;
-  width: 80%;
-  max-width: 120px;
-  height: 120px;
-  border: 0;
-  border-radius: 20px;
-  background-color: ${props => props.theme.mainDeepGreen};
-  :hover {
-    opacity: 0.9;
-    cursor: pointer;
-  }
-`;
-
-const PayImg = styled.img`
-  width: 40px;
-  height: 40px;
-`;
-
-const PayTitle = styled.p`
-  font-size: 24px;
-  color: ${props => props.theme.white};
-`;

@@ -6,6 +6,7 @@ import OrderSuccessModal from './OrderSuccessModal';
 import LodaingMothin from '../../../../../components/Common/LoadingMotion';
 import styled from 'styled-components';
 import { flexSort } from '../../../../../styles/mixin';
+import { END_POINT, URL } from '../../../../../config';
 
 const Paying = () => {
   const [orderSuccessData, setOrderSuccessData] = useState({});
@@ -39,7 +40,7 @@ const Paying = () => {
 
   useEffect(() => {
     axios
-      .post('http://10.58.52.227:3000/payments', orderData, {
+      .post(`${URL}${END_POINT.payment}`, orderData, {
         headers: {
           'Content-Type': 'application/json',
           authorization: TOKEN,
